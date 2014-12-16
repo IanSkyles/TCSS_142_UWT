@@ -1,0 +1,62 @@
+All of the programs we’ve studied so far have sent their output
+to the console window by calling System.out.print or System.out.
+println. But just as you can read input from a file instead of
+reading from the console, you can write output to a file
+instead of writing it to the console. There are many ways to
+accomplish this task. The simplest approach is to take advantage
+of what you already know. You’ve already learned all about how
+print and println statements work, and you can leverage that
+knowledge to easily create output files. 
+
+If you look at Sun’s Java documentation, you will find that
+System.out is a variable that stores a reference to an object
+of type PrintStream. The print and println statements you’ve
+been writing are calls on methods that are part of the
+PrintStream class. The variable System.out stores a reference
+to a special PrintStream object that is tied to the console
+window. However, you can construct other PrintStream objects
+that send their output to other places. Suppose, for example,
+that you want to send output to a file called results.txt. You
+can construct a PrintStream object as follows: 
+
+PrintStream output = new PrintStream(new File("results.txt"));
+
+This line of code looks a lot like the one we used to construct
+a Scanner tied to an input file. In this case, the computer is
+creating an output file. If no such file already exists, the
+program creates it. If such a file does exist, the computer
+overwrites the current version. Initially, the file will be
+empty. It will end up containing whatever output you tell it
+to produce through calls on print and println.
+
+The line of code that constructs a PrintStream object can
+generate an exception if Java is unable to create the file
+you’ve described. There are many reasons that this might happen:
+You might not have permission to write to the directory, or the
+file might be locked because another program is using it. Like
+the line of code that creates a filebased Scanner, this line of
+code potentially throws a FileNotFoundException. Therefore, Java
+requires you to include the throws clause in whatever method
+contains this line of code. The simplest approach is to put this
+line in main. In fact, it is common practice to have the main
+method begin with the lines of code that deal with the input
+and output files.
+
+Once you have constructed a PrintStream object, how do you use
+it? You should already have a good idea of what to do. We have
+been making calls on System.out.print and System.out.println
+since Chapter 1. If you recall everything you know about
+System.out you’ll have a good idea of what to do, but for this
+program, you will call output.print instead of System.out.print
+and output.println instead of System.out.println.
+
+As a simple example, remember that in Chapter 1 we looked at
+the following variation of the simple “hello world” program
+that produces several lines of output:
+
+1 public class Hello2 {
+2 public static void main(String[] args) {
+3 System.out.println("Hello, world!");
+4 System.out.println();
+
+and so on, and so on, and so on...

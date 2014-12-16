@@ -1,0 +1,10 @@
+To test the program a file
+has   to    be created of 
+   words to count  and  to
+ count the occurances
+of the 
+    words
+the              of
+    to
+  and
+and a  .
